@@ -13,6 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('role', 'JwtAuthenticateController@createRole');
+Route::post('permission', 'JwtAuthenticateController@createPermission');
+Route::post('assign-role', 'JwtAuthenticateController@assignRole');
+Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');
+Route::post('adduser', 'JwtAuthenticateController@adduser');
+
+Route::group(['prefix' => 'api', 'middleware' => ['ability:admin,create-users']], function()
+{
+    Route::get('users', 'JwtAuthenticateController@index');
 });
+
+Route::post('authenticate', 'JwtAuthenticateController@authenticate');
