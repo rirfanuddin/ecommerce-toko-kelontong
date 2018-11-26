@@ -37,4 +37,11 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('province', 'ProvinceController@store');
     Route::put('province/{id}', 'ProvinceController@edit');
     Route::delete('province/{id}', 'ProvinceController@delete');
+    
+    Route::get('city', 'CityController@index');
+    Route::get('city/{id}', 'CityController@show');
+    Route::get('city/province/{id}', 'CityController@showByProvince');
+    Route::post('city', 'CityController@store');
+    Route::put('city/{id}', 'CityController@edit');
+    Route::delete('city/{id}', 'CityController@delete');
 });
