@@ -29,3 +29,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['ability:admin,create-users']]
 });
 
 Route::post('authenticate', 'JwtAuthenticateController@authenticate');
+
+Route::group(['prefix' => 'master-parameter'], function()
+{
+    Route::get('province', 'ProvinceController@index');
+    Route::get('province/{id}', 'ProvinceController@show');
+    Route::post('province', 'ProvinceController@store');
+    Route::put('province/{id}', 'ProvinceController@edit');
+    Route::delete('province/{id}', 'ProvinceController@delete');
+});
