@@ -47,8 +47,15 @@ Route::group(['prefix' => 'master-parameter'], function()
 
     Route::get('sub-district', 'SubDistrictController@index');
     Route::get('sub-district/{id}', 'SubDistrictController@show');
-    Route::get('sub-district/province/{id}', 'SubDistrictController@showByProvince');
+    Route::get('sub-district/city/{id}', 'SubDistrictController@showByCity');
     Route::post('sub-district', 'SubDistrictController@store');
     Route::put('sub-district/{id}', 'SubDistrictController@edit');
     Route::delete('sub-district/{id}', 'SubDistrictController@delete');
+
+    Route::get('village', 'VillageController@index');
+    Route::get('village/{id}', 'VillageController@show');
+    Route::get('village/sub-district/{id}', 'VillageController@showBySubDistrict');
+    Route::post('village', 'VillageController@store');
+    Route::put('village/{id}', 'VillageController@edit');
+    Route::delete('village/{id}', 'VillageController@delete');
 });
