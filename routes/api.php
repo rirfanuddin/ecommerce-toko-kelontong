@@ -44,4 +44,11 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('city', 'CityController@store');
     Route::put('city/{id}', 'CityController@edit');
     Route::delete('city/{id}', 'CityController@delete');
+
+    Route::get('sub-district', 'SubDistrictController@index');
+    Route::get('sub-district/{id}', 'SubDistrictController@show');
+    Route::get('sub-district/province/{id}', 'SubDistrictController@showByProvince');
+    Route::post('sub-district', 'SubDistrictController@store');
+    Route::put('sub-district/{id}', 'SubDistrictController@edit');
+    Route::delete('sub-district/{id}', 'SubDistrictController@delete');
 });
