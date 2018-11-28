@@ -7,8 +7,13 @@ use App\Village;
 
 class VillageController extends Controller
 {
-    public function index(){
-        $data = Village::all();
+    public function index(Request $request){
+        if($request->subdistrict != null){
+            $data = Village::where('sub_district_id', $request->subdistrict)->get();
+        }
+        else{
+            $data = Village::all();     
+        }
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -19,7 +24,7 @@ class VillageController extends Controller
             $response[' message'] = 'failed';
             return response($response);
         }
-
+        
     }
 
     public function show($id){
@@ -35,20 +40,6 @@ class VillageController extends Controller
             return response($response);
         }
 
-    }
-
-    public function showByProvince($id){
-        $data = SubDistrict::where('city_id', $id)->get();
-        
-        if(count($data)>0){
-            $response['message'] = 'success';
-            $response['values'] = $data;
-            return response($response);
-        }
-        else{
-            $response['message'] = 'failed';
-            return response($response);
-        }
     }
 
     public function store(Request $request){

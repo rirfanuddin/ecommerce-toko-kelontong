@@ -7,8 +7,13 @@ use App\SubDistrict;
 
 class SubDistrictController extends Controller
 {
-    public function index(){
-        $data = SubDistrict::all();
+    public function index(Request $request){
+        if($request->city != null){
+            $data = SubDistrict::where('city_id', $request->city)->get();
+        }
+        else{
+            $data = SubDistrict::all();     
+        }        
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -35,20 +40,6 @@ class SubDistrictController extends Controller
             return response($response);
         }
 
-    }
-
-    public function showByProvince($id){
-        $data = SubDistrict::where('city_id', $id)->get();
-        
-        if(count($data)>0){
-            $response['message'] = 'success';
-            $response['values'] = $data;
-            return response($response);
-        }
-        else{
-            $response['message'] = 'failed';
-            return response($response);
-        }
     }
 
     public function store(Request $request){

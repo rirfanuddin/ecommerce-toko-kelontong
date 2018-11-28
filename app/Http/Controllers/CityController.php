@@ -7,8 +7,13 @@ use App\City;
 
 class CityController extends Controller
 {
-    public function index(){
-        $data = City::all();
+    public function index(Request $request){
+        if($request->province != null){
+            $data = City::where('province_id', $request->province)->get();
+        }
+        else{
+            $data = City::all();     
+        }
 
         if(count($data)>0){
             $response['message'] = 'success';

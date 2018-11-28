@@ -38,23 +38,20 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::put('province/{id}', 'ProvinceController@edit');
     Route::delete('province/{id}', 'ProvinceController@delete');
     
-    Route::get('city', 'CityController@index');
-    Route::get('city/{id}', 'CityController@show');
-    Route::get('city/province/{id}', 'CityController@showByProvince');
+    Route::get('city/{province?}', 'CityController@index');
+    Route::get('city/{id}', 'CityController@show');    
     Route::post('city', 'CityController@store');
     Route::put('city/{id}', 'CityController@edit');
     Route::delete('city/{id}', 'CityController@delete');
 
-    Route::get('sub-district', 'SubDistrictController@index');
-    Route::get('sub-district/{id}', 'SubDistrictController@show');
-    Route::get('sub-district/city/{id}', 'SubDistrictController@showByCity');
+    Route::get('sub-district/{city?}', 'SubDistrictController@index');
+    Route::get('sub-district/{id}', 'SubDistrictController@show');    
     Route::post('sub-district', 'SubDistrictController@store');
     Route::put('sub-district/{id}', 'SubDistrictController@edit');
     Route::delete('sub-district/{id}', 'SubDistrictController@delete');
 
-    Route::get('village', 'VillageController@index');
-    Route::get('village/{id}', 'VillageController@show');
-    Route::get('village/sub-district/{id}', 'VillageController@showBySubDistrict');
+    Route::get('village/{subdistrict?}', 'VillageController@index');
+    Route::get('village/{id}', 'VillageController@show');    
     Route::post('village', 'VillageController@store');
     Route::put('village/{id}', 'VillageController@edit');
     Route::delete('village/{id}', 'VillageController@delete');
