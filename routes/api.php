@@ -55,4 +55,10 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('village', 'VillageController@store');
     Route::put('village/{id}', 'VillageController@edit');
     Route::delete('village/{id}', 'VillageController@delete');
+
+    Route::get('transportation', 'UserTransportationController@index');
+    Route::get('transportation/{id}', 'UserTransportationController@show');
+    Route::post('transportation', 'UserTransportationController@store');
+    Route::put('transportation/{id}', 'UserTransportationController@edit');
+    Route::delete('transportation/{id}', 'UserTransportationController@delete');
 });
