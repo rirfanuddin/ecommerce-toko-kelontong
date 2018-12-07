@@ -61,4 +61,10 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('transportation', 'UserTransportationController@store');
     Route::put('transportation/{id}', 'UserTransportationController@edit');
     Route::delete('transportation/{id}', 'UserTransportationController@delete');
+
+    Route::get('category', 'CategoryController@index');
+    Route::get('category/{id}', 'CategoryController@show');
+    Route::post('category', 'CategoryController@store');
+    Route::put('category/{id}', 'CategoryController@edit');
+    Route::delete('category/{id}', 'CategoryController@delete');
 });
