@@ -12,7 +12,7 @@ class UserTransportationController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -27,7 +27,7 @@ class UserTransportationController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -43,7 +43,7 @@ class UserTransportationController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
     }
@@ -56,7 +56,7 @@ class UserTransportationController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -69,7 +69,7 @@ class UserTransportationController extends Controller
         $data = UserTransportation::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{

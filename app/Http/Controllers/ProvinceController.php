@@ -12,7 +12,7 @@ class ProvinceController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -27,7 +27,7 @@ class ProvinceController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -44,7 +44,7 @@ class ProvinceController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
     }
@@ -59,7 +59,7 @@ class ProvinceController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -72,7 +72,7 @@ class ProvinceController extends Controller
         $data = Province::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
