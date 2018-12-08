@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Province;
+use App\Category;
 
-class ProvinceController extends Controller
+class CategoryController extends Controller
 {
     public function index(){
-        $data = Province::all();
+        $data = Category::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -23,7 +23,7 @@ class ProvinceController extends Controller
     }
 
     public function show($id){
-        $data = Province::where('id', $id)->get();
+        $data = Category::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -38,9 +38,9 @@ class ProvinceController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Province();
-        $data->province_name = $request->input('province_name');
-        $data->province_description = $request->input('province_description');
+        $data = new Category();
+        $data->category_name = $request->input('category_name');
+        $data->description = $request->input('category_description');
 
         if($data->save()){
             $response['message'] = 'success';
@@ -50,12 +50,12 @@ class ProvinceController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $province_name = $request->input('province_name');
-        $province_description = $request->input('province_description');
-        
-        $data = Province::where('id', $id)->first();
-        $data->province_name = $province_name;
-        $data->province_description = $province_description;
+        $category_name = $request->input('category_name');
+        $description = $request->input('category_description');    
+
+        $data = Category::where('id', $id)->first();
+        $data->category_name = $category_name;
+        $data->description = $description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -69,7 +69,7 @@ class ProvinceController extends Controller
     }
 
     public function delete($id){
-        $data = Province::where('id', $id)->first();
+        $data = Category::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;
@@ -80,5 +80,4 @@ class ProvinceController extends Controller
             return response($response);
         }
     }
-
 }

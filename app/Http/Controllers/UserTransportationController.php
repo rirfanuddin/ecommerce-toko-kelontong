@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Province;
+use App\UserTransportation;
 
-class ProvinceController extends Controller
+class UserTransportationController extends Controller
 {
-    public function index(){
-        $data = Province::all();
+    public function index(Request $request){
+        $data = UserTransportation::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -16,14 +16,14 @@ class ProvinceController extends Controller
             return response($response);
         }
         else{
-            $response['message'] = 'failed';
+            $response[' message'] = 'failed';
             return response($response);
         }
-
+        
     }
 
     public function show($id){
-        $data = Province::where('id', $id)->get();
+        $data = UserTransportation::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -38,9 +38,8 @@ class ProvinceController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Province();
-        $data->province_name = $request->input('province_name');
-        $data->province_description = $request->input('province_description');
+        $data = new UserTransportation();
+        $data->user_transportation_name = $request->input('user_transportation_name');        
 
         if($data->save()){
             $response['message'] = 'success';
@@ -50,12 +49,10 @@ class ProvinceController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $province_name = $request->input('province_name');
-        $province_description = $request->input('province_description');
+        $user_transportation_name = $request->input('user_transportation_name');        
         
-        $data = Province::where('id', $id)->first();
-        $data->province_name = $province_name;
-        $data->province_description = $province_description;
+        $data = UserTransportation::where('id', $id)->first();
+        $data->user_transportation_name = $user_transportation_name;        
 
         if($data->save()){
             $response['message'] = 'success';
@@ -69,7 +66,7 @@ class ProvinceController extends Controller
     }
 
     public function delete($id){
-        $data = Province::where('id', $id)->first();
+        $data = UserTransportation::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;
@@ -80,5 +77,4 @@ class ProvinceController extends Controller
             return response($response);
         }
     }
-
 }

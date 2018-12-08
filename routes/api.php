@@ -55,4 +55,21 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('village', 'VillageController@store');
     Route::put('village/{id}', 'VillageController@edit');
     Route::delete('village/{id}', 'VillageController@delete');
+
+    Route::get('transportation', 'UserTransportationController@index');
+    Route::get('transportation/{id}', 'UserTransportationController@show');
+    Route::post('transportation', 'UserTransportationController@store');
+    Route::put('transportation/{id}', 'UserTransportationController@edit');
+    Route::delete('transportation/{id}', 'UserTransportationController@delete');
+
+    Route::get('category', 'CategoryController@index');
+    Route::get('category/{id}', 'CategoryController@show');
+    Route::post('category', 'CategoryController@store');
+    Route::put('category/{id}', 'CategoryController@edit');
+    Route::delete('category/{id}', 'CategoryController@delete');
+
 });
+
+Route::get('address/{id}', 'AddressController@show');
+Route::post('address', 'AddressController@store');
+Route::put('address/{id}', 'AddressController@edit');

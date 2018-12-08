@@ -17,7 +17,7 @@ class CityController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -32,7 +32,7 @@ class CityController extends Controller
 
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -47,7 +47,7 @@ class CityController extends Controller
         
         if(count($data)>0){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -64,7 +64,7 @@ class CityController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
     }
@@ -79,7 +79,7 @@ class CityController extends Controller
 
         if($data->save()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
@@ -92,7 +92,7 @@ class CityController extends Controller
         $data = City::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
-            $response['values'] = $data;
+            $response['results'] = $data;
             return response($response);
         }
         else{
