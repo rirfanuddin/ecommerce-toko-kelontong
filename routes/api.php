@@ -67,4 +67,9 @@ Route::group(['prefix' => 'master-parameter'], function()
     Route::post('category', 'CategoryController@store');
     Route::put('category/{id}', 'CategoryController@edit');
     Route::delete('category/{id}', 'CategoryController@delete');
+
 });
+
+Route::get('address/{id}', 'AddressController@show');
+Route::post('address', 'AddressController@store');
+Route::put('address/{id}', 'AddressController@edit');
