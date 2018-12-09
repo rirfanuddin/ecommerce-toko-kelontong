@@ -17,18 +17,23 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('role', 'JwtAuthenticateController@createRole');
-Route::post('permission', 'JwtAuthenticateController@createPermission');
-Route::post('assign-role', 'JwtAuthenticateController@assignRole');
-Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');
-Route::post('adduser', 'JwtAuthenticateController@adduser');
-
-Route::group(['prefix' => 'api', 'middleware' => ['ability:admin,create-users']], function()
+Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('users', 'JwtAuthenticateController@index');
+    // Route::group(['prefix' => 'base'], function()
+    // {
+    //     Route::post('role', 'AdminController@createRole');
+    //     Route::post('permission', 'AdminController@createPermission');
+    //     Route::post('assign-role', 'AdminController@assignRole');
+    //     Route::post('attach-permission', 'AdminController@attachPermission');        
+    // });
+    Route::post('register', 'AdminController@register');
+    Route::post('login', 'AdminController@login');
 });
 
-Route::post('authenticate', 'JwtAuthenticateController@authenticate');
+Route::group(['prefix' => 'admin', 'middleware' => ['ability:admin,create-users']], function()
+{
+    Route::get('users', 'AdminController@index');
+});
 
 Route::group(['prefix' => 'master-parameter'], function()
 {
