@@ -40,7 +40,7 @@ class AdminController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        return response()->json([compact('token'),'user'=>Auth::user()]);
     }    
 
     public function register(Request $request){
