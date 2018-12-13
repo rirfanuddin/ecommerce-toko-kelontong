@@ -30,6 +30,12 @@ Route::group(['prefix' => 'admin'], function()
     Route::post('login', 'AdminController@login');
 });
 
+Route::group(['prefix' => 'customer'], function()
+{
+    Route::post('register', 'UserController@register');
+    Route::post('login', 'UserController@login');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => ['ability:admin,create-users']], function()
 {
     Route::get('users', 'AdminController@index');
