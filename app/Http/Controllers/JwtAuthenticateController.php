@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Permission;
 use App\Role;
 use App\User;
+use App\RoleUser;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,7 +40,7 @@ class JwtAuthenticateController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        return response()->json([compact('token'), 'user'=>Auth::user()]);
     }
 
     public function createRole(Request $request){
@@ -81,27 +82,35 @@ class JwtAuthenticateController extends Controller
         return response()->json("created");
     }
 
-    public function checkRoles(Request $request){
-        $user = User::where('email', '=', $request->input('email'))->first();
-        Log::info($user);
-        return response()->json([
-            "user" => $user,
-            "owner" => $user->hasRole('owner'),
-            "admin" => $user->hasRole('admin'),
-            "editUser" => $user->can('edit-user'),
-            "listUsers" => $user->can('list-users')
-        ]);
-    }
-
-    public function adduser(Request $request){
+    public function addadmincore(Request $request){
         $user  = new User();
+        $roleuser = new RoleUser();
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
+        $user->username = $request->input('username');
+        $user->phone = $request->input('phone');        
         $user->save();
+
+        $roleuser->user_id = $user->id;
+        $roleuser->role_id = "1";
+        $roleuser->save();
 
         return response()->json("created");
     }
+
+    // public function checkRoles(Request $request){
+    //     $user = User::where('email', '=', $request->input('email'))->first();
+    //     Log::info($user);
+    //     return response()->json([
+    //         "user" => $user,
+    //         "owner" => $user->hasRole('owner'),
+    //         "admin" => $user->hasRole('admin'),
+    //         "editUser" => $user->can('edit-user'),
+    //         "listUsers" => $user->can('list-users')
+    //     ]);
+    // }
 
 }
 

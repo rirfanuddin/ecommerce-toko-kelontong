@@ -2,30 +2,38 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
+// Basic routes API
+Route::group(['prefix' => 'basic', 'middleware' => ['basicAuth']], function()
+{
+    Route::post('role', 'JwtAuthenticateController@createRole');
+    Route::post('permission', 'JwtAuthenticateController@createPermission');
+    Route::post('add-admin-core', 'JwtAuthenticateController@addadmincore');
+
+    Route::post('assign-role', 'JwtAuthenticateController@assignRole');
+    Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');    
+});
+
+
+// Admin-Core routes API
+Route::group(['prefix' => 'admin', 'middleware' => ['basicAuth']], function()
+{
+    Route::post('role', 'JwtAuthenticateController@createRole');
+    Route::post('permission', 'JwtAuthenticateController@createPermission');
+    Route::post('add-admin-core', 'JwtAuthenticateController@addadmincore');
+
+    Route::post('assign-role', 'JwtAuthenticateController@assignRole');
+    Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');    
+});
+
+
+
+
 Route::group(['prefix' => 'admin'], function()
 {
-    // Route::group(['prefix' => 'base'], function()
-    // {
-    //     Route::post('role', 'AdminController@createRole');
-    //     Route::post('permission', 'AdminController@createPermission');
-    //     Route::post('assign-role', 'AdminController@assignRole');
-    //     Route::post('attach-permission', 'AdminController@attachPermission');        
-    // });
     Route::post('register', 'AdminController@register');
     Route::post('login', 'AdminController@login');
 });
