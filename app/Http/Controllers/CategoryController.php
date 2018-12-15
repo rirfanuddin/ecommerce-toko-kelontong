@@ -47,6 +47,10 @@ class CategoryController extends Controller
             $response['results'] = $data;
             return response($response);
         }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
     }
 
     public function edit(Request $request, $id){

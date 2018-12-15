@@ -143,6 +143,16 @@ Route::group(['middleware' => ['basicAuth']], function()
 
     Route::group(['prefix' => 'shop'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
+        Route::group(['middleware' => ['ability:shop,2']], function()
+        {                                        
+            Route::group(['prefix' => 'product'], function()
+            {                                        
+                Route::post('/', 'ProductController@store');                
+                Route::get('/{id}', 'ProductController@show');
+                Route::put('/{id}', 'ProductController@edit');
+                Route::delete('/{id}', 'ProductController@delete');
+            });            
+        });
     }); 
 
 
