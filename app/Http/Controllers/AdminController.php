@@ -19,37 +19,16 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {    
-    public function register(Request $request){
-        $user  = new User();
-        $roleuser = new RoleUser();
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->username = $request->input('username');
-        $user->phone = $request->input('phone');        
-        $user->save();
-
-        $roleuser->user_id = $user->id;
-        $roleuser->role_id = "2";
-        $roleuser->save();
-
-        return response()->json("created");
-    }
-
-
-
-
-
-    public function index(){
-        $data = DB::select('select * from role_user, users where role_id=2 and role_user.user_id=users.id');
-        dd($data);
-        return response()->json(['auth'=>Auth::user(), 'users'=>User::all()]);
-    }
-
-    public function show($id){
-        $data = Category::where('id', $id)->get();
-
+    public function user_index(){
+        $data = DB::select('select id, 
+                                    name, 
+                                    email, 
+                                    username, 
+                                    phone, 
+                                    phone_verified_at                                    
+                            from role_user, users 
+                            where role_id=4 and 
+                                    role_user.user_id=users.id');
         if(count($data)>0){
             $response['message'] = 'success';
             $response['results'] = $data;
@@ -59,7 +38,104 @@ class AdminController extends Controller
             $response['message'] = 'failed';
             return response($response);
         }
+    }
 
+    public function user_show($id){
+        $data = DB::select('select id, 
+                                    name, 
+                                    email, 
+                                    email_verified_at, 
+                                    created_at, 
+                                    username, 
+                                    phone, 
+                                    phone_verified_at, 
+                                    bod, 
+                                    transportation_id 
+                            from role_user, users 
+                            where role_id=4 and 
+                                    role_user.user_id=users.id and 
+                                    id = ?', [$id]);
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+    }
+
+    public function shop_index(){
+        $data = DB::select('select id, 
+                                    name, 
+                                    email, 
+                                    username, 
+                                    phone, 
+                                    phone_verified_at                                    
+                            from role_user, users 
+                            where role_id=3 and 
+                                    role_user.user_id=users.id');
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+    }
+
+    public function shop_show($id){
+        $data = DB::select('select id, 
+                                    name, 
+                                    email, 
+                                    email_verified_at, 
+                                    created_at, 
+                                    username, 
+                                    phone, 
+                                    phone_verified_at, 
+                                    bod, 
+                                    transportation_id 
+                            from role_user, users 
+                            where role_id=3 and 
+                                    role_user.user_id=users.id and 
+                                    id = ?', [$id]);
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+    }
+
+    public function shop_edit(Request $request, $id){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $username = $request->input('username');
+        $phone = $request->input('phone');
+        
+        $data = User::where('id', $id)->first();
+        $data->name = $name;
+        $data->email = $email;
+        $data->password = Hash::make($password);;
+        $data->username = $username;
+        $data->phone = $phone;
+
+        if($data->save()){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
     }
 }
 

@@ -22,6 +22,30 @@ Route::group(['middleware' => ['basicAuth']], function()
     // =================================beginning of admin-core=================================
     Route::group(['prefix' => 'admin-core'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
+        Route::group(['middleware' => ['ability:admin-core,4']], function()
+        {                                        
+            Route::group(['prefix' => 'admin'], function()
+            {                                        
+                Route::get('/', 'AdminCoreController@admin_index');
+                Route::get('/{id}', 'AdminCoreController@admin_show');
+                Route::post('/', 'AdminCoreController@admin_register');
+                Route::put('/{id}', 'AdminCoreController@admin_edit');
+                // Route::put('/delete/{id}', 'AdminCoreController@admin_delete');
+            });                                                  
+            Route::group(['prefix' => 'user'], function()
+            {                                        
+                Route::get('/', 'AdminController@user_index');
+                Route::get('/{id}', 'AdminController@user_show');            
+            });
+            Route::group(['prefix' => 'shop'], function()
+            {                                        
+                Route::post('/register', 'ShopController@register');
+                Route::get('/', 'AdminController@shop_index');
+                Route::get('/{id}', 'AdminController@shop_show');
+                Route::put('/{id}', 'AdminController@shop_edit');
+                // Route::delete('/{id}', 'AdminController@shop_delete');            
+            });         
+        });
     }); 
     
     Route::group(['prefix' => 'province', 'middleware' => ['ability:admin-core,4']], function()
@@ -87,29 +111,38 @@ Route::group(['middleware' => ['basicAuth']], function()
         Route::put('/delete/{id}', 'PaymentController@delete');
     });
 
+    
+
     // =================================end of admin-core==================================
     // =================================beginning of admin=================================
 
     Route::group(['prefix' => 'admin'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
-        Route::post('register', 'AdminController@register');
-    });
-
-    Route::group(['middleware' => ['ability:admin,3']], function()
-    {                                        
-        Route::group(['prefix' => 'user'], function()
+        Route::group(['middleware' => ['ability:admin,3']], function()
         {                                        
-            Route::get('/', 'AdminController@index');
-            Route::get('/{id}', 'AdminController@show');            
+            Route::group(['prefix' => 'user'], function()
+            {                                        
+                Route::get('/', 'AdminController@user_index');
+                Route::get('/{id}', 'AdminController@user_show');            
+            });
+            Route::group(['prefix' => 'shop'], function()
+            {                                        
+                Route::post('/register', 'ShopController@register');
+                Route::get('/', 'AdminController@shop_index');
+                Route::get('/{id}', 'AdminController@shop_show');
+                Route::put('/{id}', 'AdminController@shop_edit');
+                // Route::delete('/{id}', 'AdminController@shop_delete');            
+            });
         });
     });
+
+    
 
     // =================================end of admin======================================
     // =================================beginning of shop=================================
 
     Route::group(['prefix' => 'shop'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
-        Route::post('register', 'ShopController@register');
     }); 
 
 
@@ -136,18 +169,7 @@ Route::group(['middleware' => ['basicAuth']], function()
 
 
 
-Route::post('register', 'AdminController@register');
 
-Route::group(['prefix' => 'customer'], function()
-{
-    Route::post('register', 'UserController@register');
-    Route::post('login', 'UserController@login');
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['ability:admin,create-users']], function()
-{
-    Route::get('users', 'AdminController@index');
-});
 
 Route::get('address/{id}', 'AddressController@show');
 Route::post('address', 'AddressController@store');
