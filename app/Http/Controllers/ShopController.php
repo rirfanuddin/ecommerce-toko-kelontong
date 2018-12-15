@@ -17,7 +17,7 @@ use Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class ShopController extends Controller
 {    
     public function register(Request $request){
         $user  = new User();
@@ -31,7 +31,7 @@ class AdminController extends Controller
         $user->save();
 
         $roleuser->user_id = $user->id;
-        $roleuser->role_id = "2";
+        $roleuser->role_id = "3";
         $roleuser->save();
 
         return response()->json("created");

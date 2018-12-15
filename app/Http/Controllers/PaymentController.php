@@ -3,17 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\SubDistrict;
+use App\Payment;
 
-class SubDistrictController extends Controller
+class PaymentController extends Controller
 {
-    public function index(Request $request){
-        if($request->city != null){
-            $data = SubDistrict::where('city_id', $request->city)->get();
-        }
-        else{
-            $data = SubDistrict::all();     
-        }        
+    public function index(){
+        $data = Payment::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -28,8 +23,8 @@ class SubDistrictController extends Controller
     }
 
     public function show($id){
-        $data = SubDistrict::where('id', $id)->get();
-        
+        $data = Payment::where('id', $id)->get();
+
         if(count($data)>0){
             $response['message'] = 'success';
             $response['results'] = $data;
@@ -43,10 +38,9 @@ class SubDistrictController extends Controller
     }
 
     public function store(Request $request){
-        $data = new SubDistrict();
-        $data->city_id = $request->input('city_id');
-        $data->sub_district_name = $request->input('sub_district_name');
-        $data->sub_district_description = $request->input('sub_district_description');
+        $data = new Payment();
+        $data->payment_type = $request->input('payment_type');
+        $data->description = $request->input('description');
 
         if($data->save()){
             $response['message'] = 'success';
@@ -56,12 +50,12 @@ class SubDistrictController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $sub_district_name = $request->input('sub_district_name');
-        $sub_district_description = $request->input('sub_district_description');
-        
-        $data = SubDistrict::where('id', $id)->first();
-        $data->sub_district_name = $sub_district_name;
-        $data->sub_district_description = $sub_district_description;
+        $payment_type = $request->input('payment_type');
+        $description = $request->input('description');    
+
+        $data = Payment::where('id', $id)->first();
+        $data->payment_type = $payment_type;
+        $data->description = $description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -74,9 +68,12 @@ class SubDistrictController extends Controller
         }
     }
 
-    public function delete($id){
-        $data = SubDistrict::where('id', $id)->first();
-        if($data->delete()){
+    public function delete($id){           
+        $data = Payment::where('id', $id)->first();
+
+        $data->allowed = '0';
+
+        if($data->save()){
             $response['message'] = 'success';
             $response['results'] = $data;
             return response($response);

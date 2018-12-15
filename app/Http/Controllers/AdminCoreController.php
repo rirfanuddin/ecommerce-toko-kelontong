@@ -15,10 +15,15 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Log;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
-{    
+class AdminCoreController extends Controller
+{
+    
+    public function index()
+    {
+        return response()->json(['auth'=>Auth::user(), 'users'=>User::all()]);
+    }  
+
     public function register(Request $request){
         $user  = new User();
         $roleuser = new RoleUser();
@@ -37,29 +42,5 @@ class AdminController extends Controller
         return response()->json("created");
     }
 
-
-
-
-
-    public function index(){
-        $data = DB::select('select * from role_user, users where role_id=2 and role_user.user_id=users.id');
-        dd($data);
-        return response()->json(['auth'=>Auth::user(), 'users'=>User::all()]);
-    }
-
-    public function show($id){
-        $data = Category::where('id', $id)->get();
-
-        if(count($data)>0){
-            $response['message'] = 'success';
-            $response['results'] = $data;
-            return response($response);
-        }
-        else{
-            $response['message'] = 'failed';
-            return response($response);
-        }
-
-    }
 }
 
