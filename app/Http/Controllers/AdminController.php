@@ -67,15 +67,15 @@ class AdminController extends Controller
     }
 
     public function shop_index(){
-        $data = DB::select('select id, 
-                                    name, 
-                                    email, 
-                                    username, 
-                                    phone, 
-                                    phone_verified_at                                    
-                            from role_user, users 
-                            where role_id=3 and 
-                                    role_user.user_id=users.id');
+        $admin_id = Auth::user()->id;
+        $data = DB::select('select 
+                                        users.id, name, email, shop_name, phone_verified_at
+                                   from 
+                                        users, shops 
+                                   where 
+                                        users.id = shops.user_id 
+                                        and 
+                                        shops.admin_id = ?', [$admin_id]);
         if(count($data)>0){
             $response['message'] = 'success';
             $response['results'] = $data;

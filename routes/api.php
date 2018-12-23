@@ -150,7 +150,8 @@ Route::group(['middleware' => ['basicAuth']], function()
                 Route::post('/', 'ProductController@store');                
                 Route::get('/{id}', 'ProductController@show');
                 Route::put('/{id}', 'ProductController@edit');
-                Route::delete('/{id}', 'ProductController@delete');
+                Route::delete('/{id}', 'ProductController@delete
+                ');
             });            
         });
     }); 
