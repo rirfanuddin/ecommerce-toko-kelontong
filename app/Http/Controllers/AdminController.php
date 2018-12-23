@@ -88,20 +88,17 @@ class AdminController extends Controller
     }
 
     public function shop_show($id){
-        $data = DB::select('select id, 
-                                    name, 
-                                    email, 
-                                    email_verified_at, 
-                                    created_at, 
-                                    username, 
-                                    phone, 
-                                    phone_verified_at, 
-                                    bod, 
-                                    transportation_id 
-                            from role_user, users 
-                            where role_id=3 and 
-                                    role_user.user_id=users.id and 
-                                    id = ?', [$id]);
+        $admin_id = Auth::user()->id;
+        $data = DB::select('select 
+                                        *
+                                   from 
+                                        users, shops 
+                                   where 
+                                        users.id = shops.user_id 
+                                        and 
+                                        shops.admin_id = ?
+                                        and
+                                        users.id = ?', [$admin_id, $id]);
         if(count($data)>0){
             $response['message'] = 'success';
             $response['results'] = $data;
