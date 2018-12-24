@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Permission;
 use App\Role;
 use App\User;
+use App\Shop;
 use App\RoleUser;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,7 @@ class AdminController extends Controller
         $data = DB::select('select 
                                         users.id, name, email, shop_name, phone_verified_at
                                    from 
-                                        users, shops 
+                                        users, shops
                                    where 
                                         users.id = shops.user_id 
                                         and 
@@ -116,17 +117,22 @@ class AdminController extends Controller
         $password = $request->input('password');
         $username = $request->input('username');
         $phone = $request->input('phone');
+        $shop_name = $request->input('shop_name');
         
-        $data = User::where('id', $id)->first();
-        $data->name = $name;
-        $data->email = $email;
-        $data->password = Hash::make($password);;
-        $data->username = $username;
-        $data->phone = $phone;
+        $user = User::where('id', $id)->first();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = Hash::make($password);;
+        $user->username = $username;
+        $user->phone = $phone;
 
-        if($data->save()){
+        $shop = Shop::where('user_id', $id)->first();
+        $shop->shop_name = $shop_name;
+
+        if($user->save() && $shop->save()){
             $response['message'] = 'success';
-            $response['results'] = $data;
+            $response['user'] = $user;
+            $response['shop'] = $shop;
             return response($response);
         }
         else{
