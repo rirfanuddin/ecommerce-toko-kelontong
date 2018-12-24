@@ -133,6 +133,14 @@ Route::group(['middleware' => ['basicAuth']], function()
                 Route::put('/{id}', 'AdminController@shop_edit');
                 // Route::delete('/{id}', 'AdminController@shop_delete');            
             });
+            Route::group(['prefix' => 'product'], function()
+            {
+                Route::get('/', 'AdminController@product_index');
+                Route::post('/add', 'ShopController@register');
+                Route::get('/{id}', 'AdminController@shop_show');
+                Route::put('/{id}', 'AdminController@shop_edit');
+                // Route::delete('/{id}', 'AdminController@shop_delete');
+            });
         });
     });
 

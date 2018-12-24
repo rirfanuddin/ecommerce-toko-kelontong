@@ -140,5 +140,27 @@ class AdminController extends Controller
             return response($response);
         }
     }
+
+    public function product_index(){
+        $admin_id = Auth::user()->id;
+        $data = DB::select('select 
+                                        name, quantity, thumbnail, unit_price, category_id, shop_id
+                                   from 
+                                        products, shops
+                                   where 
+                                        products.shop_id = shops.id 
+                                        and 
+                                        shops.admin_id = ?', [$admin_id]);
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+    }
+
 }
 
