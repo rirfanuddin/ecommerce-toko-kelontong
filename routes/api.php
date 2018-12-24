@@ -136,8 +136,8 @@ Route::group(['middleware' => ['basicAuth']], function()
             Route::group(['prefix' => 'product'], function()
             {
                 Route::get('/', 'AdminController@product_index');
+                Route::get('/{id}', 'ProductController@show');
                 Route::post('/add', 'ShopController@register');
-                Route::get('/{id}', 'AdminController@shop_show');
                 Route::put('/{id}', 'AdminController@shop_edit');
                 // Route::delete('/{id}', 'AdminController@shop_delete');
             });
