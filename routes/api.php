@@ -137,9 +137,9 @@ Route::group(['middleware' => ['basicAuth']], function()
             {
                 Route::get('/', 'AdminController@product_index');
                 Route::get('/{id}', 'ProductController@show');
-                Route::post('/add', 'ShopController@register');
-                Route::put('/{id}', 'AdminController@shop_edit');
-                // Route::delete('/{id}', 'AdminController@shop_delete');
+                Route::post('/', 'ProductController@store');
+                Route::put('/{id}', 'ProductController@edit');
+                Route::delete('/{id}', 'ProductController@delete');
             });
         });
     });

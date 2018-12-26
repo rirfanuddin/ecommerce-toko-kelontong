@@ -23,8 +23,14 @@ class ProductController extends Controller
 {    
     public function store(Request $request){
         $data = new Product();
-        $auth = Auth::user()->id;        
-        $shop = Shop::where('user_id', $auth)->first();        
+
+        if($request->input('shop_id')!=null){
+            $id = $request->input('shop_id');
+        }else{
+            $auth = Auth::user()->id;
+            $shop = Shop::where('user_id', $auth)->first();
+            $id = $shop->id;
+        }
 
         $data->name = $request->input('name');
         $data->description = $request->input('description');
@@ -33,7 +39,7 @@ class ProductController extends Controller
         $data->unit_price = $request->input('unit_price');
         $data->picture = $request->input('picture');
         $data->category_id = $request->input('category_id');
-        $data->shop_id = $shop->id;
+        $data->shop_id = $id;
         $data->discount = $request->input('discount');
         $data->weight = $request->input('weight');
 
