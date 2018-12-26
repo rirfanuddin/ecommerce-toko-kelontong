@@ -8,6 +8,8 @@ use App\Province;
 use App\City;
 use App\SubDistrict;
 use App\Village;
+use App\UserAddress;
+use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {
@@ -41,17 +43,23 @@ class AddressController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Address();
-        $data->province_id = $request->input('province_id');
-        $data->city_id = $request->input('city_id');
-        $data->sub_district_id = $request->input('sub_district_id');
-        $data->village_id = $request->input('village_id');
-        $data->address_detail = $request->input('address_detail');
-        $data->address_postalcode = $request->input('address_postalcode');
+        $address = new Address();
+        $address->province_id = $request->input('province_id');
+        $address->city_id = $request->input('city_id');
+        $address->sub_district_id = $request->input('sub_district_id');
+        $address->village_id = $request->input('village_id');
+        $address->address_detail = $request->input('address_detail');
+        $address->address_postalcode = $request->input('address_postalcode');
+        $address->save();
 
-        if($data->save()){
+        $user_address = new UserAddress();
+        $user_address->user_id = Auth::user()->id;
+        $user_address->address_id = $address->id;
+
+
+        if($user_address->save()){
             $response['message'] = 'success';
-            $response['results'] = $data;
+            $response['results'] = $address;
             return response($response);
         }
     }

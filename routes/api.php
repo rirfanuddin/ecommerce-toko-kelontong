@@ -20,6 +20,7 @@ Route::group(['prefix' => 'basic', 'middleware' => ['basicAuth']], function()
 Route::group(['middleware' => ['basicAuth']], function()
 {
     // =================================beginning of admin-core=================================
+
     Route::group(['prefix' => 'admin-core'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
         Route::group(['middleware' => ['ability:admin-core,4']], function()
@@ -111,8 +112,6 @@ Route::group(['middleware' => ['basicAuth']], function()
         Route::put('/delete/{id}', 'PaymentController@delete');
     });
 
-    
-
     // =================================end of admin-core==================================
     // =================================beginning of admin=================================
 
@@ -144,8 +143,6 @@ Route::group(['middleware' => ['basicAuth']], function()
         });
     });
 
-    
-
     // =================================end of admin======================================
     // =================================beginning of shop=================================
 
@@ -162,8 +159,7 @@ Route::group(['middleware' => ['basicAuth']], function()
                 ');
             });            
         });
-    }); 
-
+    });
 
     // =================================end of shop=======================================
     // =================================beginning of user=================================
@@ -171,25 +167,17 @@ Route::group(['middleware' => ['basicAuth']], function()
     Route::group(['prefix' => 'user'], function(){
         Route::post('login', 'JwtAuthenticateController@authenticate');
         Route::post('register', 'UserController@register');
+        Route::group(['middleware' => ['ability:user,1']], function()
+        {
+            Route::group(['prefix' => 'address'], function()
+            {
+                Route::get('/{id}', 'AddressController@show');
+                Route::post('/', 'AddressController@store');
+                Route::put('/{id}', 'AddressController@edit');
+            });
+        });
     }); 
-
-
-
 
     // =================================end of user=================================
 
 });
-
-
-
-
-
-
-
-
-
-
-
-Route::get('address/{id}', 'AddressController@show');
-Route::post('address', 'AddressController@store');
-Route::put('address/{id}', 'AddressController@edit');
