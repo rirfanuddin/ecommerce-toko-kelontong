@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\UserTransportation;
 
-class CategoryController extends Controller
+class UserTransportationController extends Controller
 {
-    public function index(){
-        $data = Category::all();
+    public function index(Request $request){
+        $data = UserTransportation::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -16,14 +16,14 @@ class CategoryController extends Controller
             return response($response);
         }
         else{
-            $response['message'] = 'failed';
+            $response[' message'] = 'failed';
             return response($response);
         }
-
+        
     }
 
     public function show($id){
-        $data = Category::where('id', $id)->get();
+        $data = UserTransportation::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -38,28 +38,21 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Category();
-        $data->category_name = $request->input('category_name');
-        $data->description = $request->input('category_description');
+        $data = new UserTransportation();
+        $data->user_transportation_name = $request->input('user_transportation_name');        
 
         if($data->save()){
             $response['message'] = 'success';
             $response['results'] = $data;
             return response($response);
         }
-        else{
-            $response['message'] = 'failed';
-            return response($response);
-        }
     }
 
     public function edit(Request $request, $id){
-        $category_name = $request->input('category_name');
-        $description = $request->input('category_description');    
-
-        $data = Category::where('id', $id)->first();
-        $data->category_name = $category_name;
-        $data->description = $description;
+        $user_transportation_name = $request->input('user_transportation_name');        
+        
+        $data = UserTransportation::where('id', $id)->first();
+        $data->user_transportation_name = $user_transportation_name;        
 
         if($data->save()){
             $response['message'] = 'success';
@@ -73,7 +66,7 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
-        $data = Category::where('id', $id)->first();
+        $data = UserTransportation::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;

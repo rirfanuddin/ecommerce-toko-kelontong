@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Village;
+use App\Category;
 
-class VillageController extends Controller
+class CategoryController extends Controller
 {
-    public function index(Request $request){
-        if($request->subdistrict != null){
-            $data = Village::where('sub_district_id', $request->subdistrict)->get();
-        }
-        else{
-            $data = Village::all();     
-        }
+    public function index(){
+        $data = Category::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -21,14 +16,14 @@ class VillageController extends Controller
             return response($response);
         }
         else{
-            $response[' message'] = 'failed';
+            $response['message'] = 'failed';
             return response($response);
         }
-        
+
     }
 
     public function show($id){
-        $data = Village::where('id', $id)->get();
+        $data = Category::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -43,25 +38,28 @@ class VillageController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Village();
-        $data->sub_district_id = $request->input('sub_district_id');
-        $data->village_name = $request->input('village_name');
-        $data->village_description = $request->input('village_description');
+        $data = new Category();
+        $data->category_name = $request->input('category_name');
+        $data->description = $request->input('category_description');
 
         if($data->save()){
             $response['message'] = 'success';
             $response['results'] = $data;
             return response($response);
         }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
     }
 
     public function edit(Request $request, $id){
-        $village_name = $request->input('village_name');
-        $village_description = $request->input('village_description');
-        
-        $data = Village::where('id', $id)->first();
-        $data->village_name = $village_name;
-        $data->village_description = $village_description;
+        $category_name = $request->input('category_name');
+        $description = $request->input('category_description');    
+
+        $data = Category::where('id', $id)->first();
+        $data->category_name = $category_name;
+        $data->description = $description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -75,7 +73,7 @@ class VillageController extends Controller
     }
 
     public function delete($id){
-        $data = Village::where('id', $id)->first();
+        $data = Category::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;

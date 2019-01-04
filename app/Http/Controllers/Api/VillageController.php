@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\City;
+use App\Village;
 
-class CityController extends Controller
+class VillageController extends Controller
 {
     public function index(Request $request){
-        if($request->province != null){
-            $data = City::where('province_id', $request->province)->get();
+        if($request->subdistrict != null){
+            $data = Village::where('sub_district_id', $request->subdistrict)->get();
         }
         else{
-            $data = City::all();     
+            $data = Village::all();     
         }
 
         if(count($data)>0){
@@ -21,14 +21,14 @@ class CityController extends Controller
             return response($response);
         }
         else{
-            $response['message'] = 'failed';
+            $response[' message'] = 'failed';
             return response($response);
         }
-
+        
     }
 
     public function show($id){
-        $data = City::where('id', $id)->get();
+        $data = Village::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -40,27 +40,13 @@ class CityController extends Controller
             return response($response);
         }
 
-    }
-
-    public function showByProvince($id){
-        $data = City::where('province_id', $id)->get();
-        
-        if(count($data)>0){
-            $response['message'] = 'success';
-            $response['results'] = $data;
-            return response($response);
-        }
-        else{
-            $response['message'] = 'failed';
-            return response($response);
-        }
     }
 
     public function store(Request $request){
-        $data = new City();
-        $data->province_id = $request->input('province_id');
-        $data->city_name = $request->input('city_name');
-        $data->city_description = $request->input('city_description');
+        $data = new Village();
+        $data->sub_district_id = $request->input('sub_district_id');
+        $data->village_name = $request->input('village_name');
+        $data->village_description = $request->input('village_description');
 
         if($data->save()){
             $response['message'] = 'success';
@@ -70,12 +56,12 @@ class CityController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $city_name = $request->input('city_name');
-        $city_description = $request->input('city_description');
+        $village_name = $request->input('village_name');
+        $village_description = $request->input('village_description');
         
-        $data = City::where('id', $id)->first();
-        $data->city_name = $city_name;
-        $data->city_description = $city_description;
+        $data = Village::where('id', $id)->first();
+        $data->village_name = $village_name;
+        $data->village_description = $village_description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -89,7 +75,7 @@ class CityController extends Controller
     }
 
     public function delete($id){
-        $data = City::where('id', $id)->first();
+        $data = Village::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;

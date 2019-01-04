@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Province;
+use App\Payment;
 
-class ProvinceController extends Controller
+class PaymentController extends Controller
 {
     public function index(){
-        $data = Province::all();
+        $data = Payment::all();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -23,7 +23,7 @@ class ProvinceController extends Controller
     }
 
     public function show($id){
-        $data = Province::where('id', $id)->get();
+        $data = Payment::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -38,9 +38,9 @@ class ProvinceController extends Controller
     }
 
     public function store(Request $request){
-        $data = new Province();
-        $data->province_name = $request->input('province_name');
-        $data->province_description = $request->input('province_description');
+        $data = new Payment();
+        $data->payment_type = $request->input('payment_type');
+        $data->description = $request->input('description');
 
         if($data->save()){
             $response['message'] = 'success';
@@ -50,12 +50,12 @@ class ProvinceController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $province_name = $request->input('province_name');
-        $province_description = $request->input('province_description');
-        
-        $data = Province::where('id', $id)->first();
-        $data->province_name = $province_name;
-        $data->province_description = $province_description;
+        $payment_type = $request->input('payment_type');
+        $description = $request->input('description');    
+
+        $data = Payment::where('id', $id)->first();
+        $data->payment_type = $payment_type;
+        $data->description = $description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -68,9 +68,12 @@ class ProvinceController extends Controller
         }
     }
 
-    public function delete($id){
-        $data = Province::where('id', $id)->first();
-        if($data->delete()){
+    public function delete($id){           
+        $data = Payment::where('id', $id)->first();
+
+        $data->allowed = '0';
+
+        if($data->save()){
             $response['message'] = 'success';
             $response['results'] = $data;
             return response($response);
@@ -80,5 +83,4 @@ class ProvinceController extends Controller
             return response($response);
         }
     }
-
 }

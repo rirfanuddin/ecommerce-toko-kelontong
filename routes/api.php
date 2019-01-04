@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 // Basic routes API
 Route::group(['prefix' => 'basic', 'middleware' => ['basicAuth']], function()
 {
-    Route::post('role', 'JwtAuthenticateController@createRole');
-    Route::post('permission', 'JwtAuthenticateController@createPermission');
-    Route::post('add-admin-core', 'JwtAuthenticateController@addadmincore');
+    Route::post('role', 'Api\JwtAuthenticateController@createRole');
+    Route::post('permission', 'Api\JwtAuthenticateController@createPermission');
+    Route::post('add-admin-core', 'Api\JwtAuthenticateController@addadmincore');
 
-    Route::post('assign-role', 'JwtAuthenticateController@assignRole');
-    Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');    
+    Route::post('assign-role', 'Api\JwtAuthenticateController@assignRole');
+    Route::post('attach-permission', 'Api\JwtAuthenticateController@attachPermission');
 });
 
 Route::group(['middleware' => ['basicAuth']], function()
@@ -22,123 +22,123 @@ Route::group(['middleware' => ['basicAuth']], function()
     // =================================beginning of admin-core=================================
 
     Route::group(['prefix' => 'admin-core'], function(){
-        Route::post('login', 'JwtAuthenticateController@authenticate');
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
         Route::group(['middleware' => ['ability:admin-core,4']], function()
         {                                        
             Route::group(['prefix' => 'admin'], function()
             {                                        
-                Route::get('/', 'AdminCoreController@admin_index');
-                Route::get('/{id}', 'AdminCoreController@admin_show');
-                Route::post('/', 'AdminCoreController@admin_register');
-                Route::put('/{id}', 'AdminCoreController@admin_edit');
-                // Route::put('/delete/{id}', 'AdminCoreController@admin_delete');
+                Route::get('/', 'Api\AdminCoreController@admin_index');
+                Route::get('/{id}', 'Api\AdminCoreController@admin_show');
+                Route::post('/', 'Api\AdminCoreController@admin_register');
+                Route::put('/{id}', 'Api\AdminCoreController@admin_edit');
+                // Route::put('/delete/{id}', 'Api\AdminCoreController@admin_delete');
             });                                                  
             Route::group(['prefix' => 'user'], function()
             {                                        
-                Route::get('/', 'AdminController@user_index');
-                Route::get('/{id}', 'AdminController@user_show');            
+                Route::get('/', 'Api\AdminController@user_index');
+                Route::get('/{id}', 'Api\AdminController@user_show');
             });
             Route::group(['prefix' => 'shop'], function()
             {                                        
-                Route::post('/register', 'ShopController@register');
-                Route::get('/', 'AdminController@shop_index');
-                Route::get('/{id}', 'AdminController@shop_show');
-                Route::put('/{id}', 'AdminController@shop_edit');
-                // Route::delete('/{id}', 'AdminController@shop_delete');            
+                Route::post('/register', 'Api\ShopController@register');
+                Route::get('/', 'Api\AdminController@shop_index');
+                Route::get('/{id}', 'Api\AdminController@shop_show');
+                Route::put('/{id}', 'Api\AdminController@shop_edit');
+                // Route::delete('/{id}', 'Api\AdminController@shop_delete');
             });         
         });
     }); 
     
     Route::group(['prefix' => 'province', 'middleware' => ['ability:admin-core,4']], function()
     {
-        Route::get('/', 'ProvinceController@index');
-        Route::get('/{id}', 'ProvinceController@show');
-        Route::post('/', 'ProvinceController@store');
-        Route::put('/{id}', 'ProvinceController@edit');
-        Route::delete('/{id}', 'ProvinceController@delete');                
+        Route::get('/', 'Api\ProvinceController@index');
+        Route::get('/{id}', 'Api\ProvinceController@show');
+        Route::post('/', 'Api\ProvinceController@store');
+        Route::put('/{id}', 'Api\ProvinceController@edit');
+        Route::delete('/{id}', 'Api\ProvinceController@delete');
     });
     
     Route::group(['prefix' => 'city', 'middleware' => ['ability:admin-core,4']], function()
     {            
-        Route::get('/{province?}', 'CityController@index');
-        Route::get('/{id}', 'CityController@show');
-        Route::post('/', 'CityController@store');
-        Route::put('/{id}', 'CityController@edit');
-        Route::delete('/{id}', 'CityController@delete');
+        Route::get('/{province?}', 'Api\CityController@index');
+        Route::get('/{id}', 'Api\CityController@show');
+        Route::post('/', 'Api\CityController@store');
+        Route::put('/{id}', 'Api\CityController@edit');
+        Route::delete('/{id}', 'Api\CityController@delete');
     });
 
     Route::group(['prefix' => 'sub-district', 'middleware' => ['ability:admin-core,4']], function()
     {            
-        Route::get('/{city?}', 'SubDistrictController@index');
-        Route::get('/id/{id}', 'SubDistrictController@show');
-        Route::post('/', 'SubDistrictController@store');
-        Route::put('/{id}', 'SubDistrictController@edit');
-        Route::delete('/{id}', 'SubDistrictController@delete');
+        Route::get('/{city?}', 'Api\SubDistrictController@index');
+        Route::get('/id/{id}', 'Api\SubDistrictController@show');
+        Route::post('/', 'Api\SubDistrictController@store');
+        Route::put('/{id}', 'Api\SubDistrictController@edit');
+        Route::delete('/{id}', 'Api\SubDistrictController@delete');
     });
 
     Route::group(['prefix' => 'village', 'middleware' => ['ability:admin-core,4']], function()
     {                        
-        Route::get('/{subdistrict?}', 'VillageController@index');
-        Route::get('/id/{id}', 'VillageController@show');
-        Route::post('/', 'VillageController@store');
-        Route::put('/{id}', 'VillageController@edit');
-        Route::delete('/{id}', 'VillageController@delete');
+        Route::get('/{subdistrict?}', 'Api\VillageController@index');
+        Route::get('/id/{id}', 'Api\VillageController@show');
+        Route::post('/', 'Api\VillageController@store');
+        Route::put('/{id}', 'Api\VillageController@edit');
+        Route::delete('/{id}', 'Api\VillageController@delete');
     });
 
     Route::group(['prefix' => 'transportation', 'middleware' => ['ability:admin-core,4']], function()
     {                                
-        Route::get('/', 'UserTransportationController@index');
-        Route::get('/{id}', 'UserTransportationController@show');
-        Route::post('/', 'UserTransportationController@store');
-        Route::put('/{id}', 'UserTransportationController@edit');
-        Route::delete('/{id}', 'UserTransportationController@delete');
+        Route::get('/', 'Api\UserTransportationController@index');
+        Route::get('/{id}', 'Api\UserTransportationController@show');
+        Route::post('/', 'Api\UserTransportationController@store');
+        Route::put('/{id}', 'Api\UserTransportationController@edit');
+        Route::delete('/{id}', 'Api\UserTransportationController@delete');
     });
 
     Route::group(['prefix' => 'category', 'middleware' => ['ability:admin-core,4']], function()
     {                                        
-        Route::get('/', 'CategoryController@index');
-        Route::get('/{id}', 'CategoryController@show');  
-        Route::post('/', 'CategoryController@store');
-        Route::put('/{id}', 'CategoryController@edit');
-        Route::delete('/{id}', 'CategoryController@delete');
+        Route::get('/', 'Api\CategoryController@index');
+        Route::get('/{id}', 'Api\CategoryController@show');
+        Route::post('/', 'Api\CategoryController@store');
+        Route::put('/{id}', 'Api\CategoryController@edit');
+        Route::delete('/{id}', 'Api\CategoryController@delete');
     });
 
     Route::group(['prefix' => 'payment', 'middleware' => ['ability:admin-core,4']], function()
     {                                        
-        Route::get('/', 'PaymentController@index');
-        Route::get('/{id}', 'PaymentController@show');
-        Route::post('/', 'PaymentController@store');
-        Route::put('/{id}', 'PaymentController@edit');
-        Route::put('/delete/{id}', 'PaymentController@delete');
+        Route::get('/', 'Api\PaymentController@index');
+        Route::get('/{id}', 'Api\PaymentController@show');
+        Route::post('/', 'Api\PaymentController@store');
+        Route::put('/{id}', 'Api\PaymentController@edit');
+        Route::put('/delete/{id}', 'Api\PaymentController@delete');
     });
 
     // =================================end of admin-core==================================
     // =================================beginning of admin=================================
 
     Route::group(['prefix' => 'admin'], function(){
-        Route::post('login', 'JwtAuthenticateController@authenticate');
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
         Route::group(['middleware' => ['ability:admin,3']], function()
         {                                        
             Route::group(['prefix' => 'user'], function()
             {                                        
-                Route::get('/', 'AdminController@user_index');
-                Route::get('/{id}', 'AdminController@user_show');            
+                Route::get('/', 'Api\AdminController@user_index');
+                Route::get('/{id}', 'Api\AdminController@user_show');
             });
             Route::group(['prefix' => 'shop'], function()
             {                                        
-                Route::post('/register', 'ShopController@register');
-                Route::get('/', 'AdminController@shop_index');
-                Route::get('/{id}', 'AdminController@shop_show');
-                Route::put('/{id}', 'AdminController@shop_edit');
-                // Route::delete('/{id}', 'AdminController@shop_delete');            
+                Route::post('/register', 'Api\ShopController@register');
+                Route::get('/', 'Api\AdminController@shop_index');
+                Route::get('/{id}', 'Api\AdminController@shop_show');
+                Route::put('/{id}', 'Api\AdminController@shop_edit');
+                // Route::delete('/{id}', 'Api\AdminController@shop_delete');
             });
             Route::group(['prefix' => 'product'], function()
             {
-                Route::get('/', 'AdminController@product_index');
-                Route::get('/{id}', 'ProductController@show');
-                Route::post('/', 'ProductController@store');
-                Route::put('/{id}', 'ProductController@edit');
-                Route::delete('/{id}', 'ProductController@delete');
+                Route::get('/', 'Api\AdminController@product_index');
+                Route::get('/{id}', 'Api\ProductController@show');
+                Route::post('/', 'Api\ProductController@store');
+                Route::put('/{id}', 'Api\ProductController@edit');
+                Route::delete('/{id}', 'Api\ProductController@delete');
             });
         });
     });
@@ -147,15 +147,15 @@ Route::group(['middleware' => ['basicAuth']], function()
     // =================================beginning of shop=================================
 
     Route::group(['prefix' => 'shop'], function(){
-        Route::post('login', 'JwtAuthenticateController@authenticate');
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
         Route::group(['middleware' => ['ability:shop,2']], function()
         {                                        
             Route::group(['prefix' => 'product'], function()
             {                                        
-                Route::post('/', 'ProductController@store');                
-                Route::get('/{id}', 'ProductController@show');
-                Route::put('/{id}', 'ProductController@edit');
-                Route::delete('/{id}', 'ProductController@delete
+                Route::post('/', 'Api\ProductController@store');
+                Route::get('/{id}', 'Api\ProductController@show');
+                Route::put('/{id}', 'Api\ProductController@edit');
+                Route::delete('/{id}', 'Api\ProductController@delete
                 ');
             });            
         });
@@ -165,15 +165,15 @@ Route::group(['middleware' => ['basicAuth']], function()
     // =================================beginning of user=================================
 
     Route::group(['prefix' => 'user'], function(){
-        Route::post('login', 'JwtAuthenticateController@authenticate');
-        Route::post('register', 'UserController@register');
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
+        Route::post('register', 'Api\UserController@register');
         Route::group(['middleware' => ['ability:user,1']], function()
         {
             Route::group(['prefix' => 'address'], function()
             {
-                Route::get('/{id}', 'AddressController@show');
-                Route::post('/', 'AddressController@store');
-                Route::put('/{id}', 'AddressController@edit');
+                Route::get('/{id}', 'Api\AddressController@show');
+                Route::post('/', 'Api\AddressController@store');
+                Route::put('/{id}', 'Api\AddressController@edit');
             });
         });
     }); 

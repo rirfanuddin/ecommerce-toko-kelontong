@@ -1,29 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\UserTransportation;
+use App\City;
 
-class UserTransportationController extends Controller
+class CityController extends Controller
 {
     public function index(Request $request){
-        $data = UserTransportation::all();
-
-        if(count($data)>0){
-            $response['message'] = 'success';
-            $response['results'] = $data;
-            return response($response);
+        if($request->province != null){
+            $data = City::where('province_id', $request->province)->get();
         }
         else{
-            $response[' message'] = 'failed';
-            return response($response);
+            $data = City::all();     
         }
-        
-    }
-
-    public function show($id){
-        $data = UserTransportation::where('id', $id)->get();
 
         if(count($data)>0){
             $response['message'] = 'success';
@@ -37,9 +27,40 @@ class UserTransportationController extends Controller
 
     }
 
+    public function show($id){
+        $data = City::where('id', $id)->get();
+
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+
+    }
+
+    public function showByProvince($id){
+        $data = City::where('province_id', $id)->get();
+        
+        if(count($data)>0){
+            $response['message'] = 'success';
+            $response['results'] = $data;
+            return response($response);
+        }
+        else{
+            $response['message'] = 'failed';
+            return response($response);
+        }
+    }
+
     public function store(Request $request){
-        $data = new UserTransportation();
-        $data->user_transportation_name = $request->input('user_transportation_name');        
+        $data = new City();
+        $data->province_id = $request->input('province_id');
+        $data->city_name = $request->input('city_name');
+        $data->city_description = $request->input('city_description');
 
         if($data->save()){
             $response['message'] = 'success';
@@ -49,10 +70,12 @@ class UserTransportationController extends Controller
     }
 
     public function edit(Request $request, $id){
-        $user_transportation_name = $request->input('user_transportation_name');        
+        $city_name = $request->input('city_name');
+        $city_description = $request->input('city_description');
         
-        $data = UserTransportation::where('id', $id)->first();
-        $data->user_transportation_name = $user_transportation_name;        
+        $data = City::where('id', $id)->first();
+        $data->city_name = $city_name;
+        $data->city_description = $city_description;
 
         if($data->save()){
             $response['message'] = 'success';
@@ -66,7 +89,7 @@ class UserTransportationController extends Controller
     }
 
     public function delete($id){
-        $data = UserTransportation::where('id', $id)->first();
+        $data = City::where('id', $id)->first();
         if($data->delete()){
             $response['message'] = 'success';
             $response['results'] = $data;
