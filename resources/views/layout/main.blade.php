@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Plus - E-Commerce Template</title>
+    <title>Toukou - E-Commerce Toko Kelontong</title>
     <meta charset="utf-8">
     <meta name="description" content="Plus E-Commerce Template">
     <meta name="author" content="Diamant Gjota" />
@@ -38,52 +38,25 @@
         <div class="topBar">
             <div class="container">
                 <ul class="list-inline pull-left hidden-sm hidden-xs">
-                    <li><i class="fa fa-phone mr-5"></i>+123 4567 8910</li>
-                    <li><i class="fa fa-envelope mr-5"></i>sales@yourdomain.com</li>
+                    <li><i class="fa fa-phone mr-5"></i>+62 813 2992 6525</li>
+                    <li><i class="fa fa-envelope mr-5"></i>admin@toukou.id</li>
                 </ul>
                 
-                <ul class="topBarNav pull-right">
-                    <li class="linkdown">
-                        <a href="javascript:void(0);">
-                            <i class="fa fa-usd mr-5"></i>
-                            USD
-                            <i class="fa fa-angle-down ml-5"></i>
-                        </a>
-                        <ul class="w-100">
-                            <li><a href="javascript:void(0);"><i class="fa fa-eur mr-5"></i>EUR</a></li>
-                            <li class="active"><a href="javascript:void(0);"><i class="fa fa-usd mr-5"></i>USD</a></li>
-                            <li><a href="javascript:void(0);"><i class="fa fa-gbp mr-5"></i>GBP</a></li>
-                        </ul>
-                    </li>
-                    <li class="linkdown">
-                        <a href="javascript:void(0);">
-                            <img src="{{ url('img/0/flags/flag-french.jpg')}}" class="mr-5" alt="">
-                            <span class="hidden-xs">
-                                French 
-                                <i class="fa fa-angle-down ml-5"></i>
-                            </span>    
-                        </a>
-                        <ul class="w-100">
-                            <li><a href="javascript:void(0);"><img src="{{ url('img/0/flags/flag-english.jpg')}}" class="mr-5" alt="">English</a></li>
-                            <li class="active"><a href="javascript:void(0);"><img src="{{ url('img/0/flags/flag-french.jpg')}}" class="mr-5" alt="">French</a></li>
-                            <li><a href="javascript:void(0);"><img src="{{ url('img/0/flags/flag-german.jpg')}}" class="mr-5" alt="">German</a></li>
-                            <li><a href="javascript:void(0);"><img src="{{ url('img/0/flags/flag-spain.jpg')}}" class="mr-5" alt="">Spain</a></li>
-                        </ul>
-                    </li>
+                <ul class="topBarNav pull-right">                    
                     <li class="linkdown">
                         <a href="javascript:void(0);">
                             <i class="fa fa-user mr-5"></i>
                             <span class="hidden-xs">
-                                My Account 
+                                Akun Saya
                                 <i class="fa fa-angle-down ml-5"></i>
                             </span>
                         </a>
                         <ul class="w-150">
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Create Account</a></li>
+                            <li><a href="login.html">Masuk</a></li>
+                            <li><a href="register.html">Buat Akun</a></li>
                             <li class="divider"></li>
-                            <li><a href="wishlist.html">Wishlist (5)</a></li>
-                            <li><a href="cart.html">My Cart</a></li>
+                            <li><a href="wishlist.html">Disukai (5)</a></li>
+                            <li><a href="cart.html">Keranjang Saya</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
                     </li>
@@ -91,7 +64,7 @@
                         <a href="javascript:void(0);">
                             <i class="fa fa-shopping-basket mr-5"></i>
                             <span class="hidden-xs">
-                                Cart<sup class="text-primary">(3)</sup>
+                                Keranjang<sup class="text-primary">(3)</sup>
                                 <i class="fa fa-angle-down ml-5"></i>
                             </span>    
                         </a>
@@ -146,7 +119,7 @@
                             </li>
                             <li>
                                 <div class="cart-footer">
-                                    <a href="cart.html" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
+                                    <a href="cart.html" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>Lihat Keranjang</a>
                                     <a href="checkout.html" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
                                 </div>
                             </li>
@@ -340,7 +313,7 @@
                                                             </span>
                                                         </div>
                                                         <figure class="layer">
-                                                            <img src="{{ url('img/0/products/men_01.jpg') }}" alt="">
+                                                            <img src="img/products/men_01.jpg" alt="">
                                                         </figure>
                                                         <div class="icons">
                                                             <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
@@ -372,7 +345,7 @@
                                                             </span>
                                                         </div>
                                                         <figure class="layer">
-                                                            <img src="{{ url('img/0/products/women_01.jpg') }}" alt="">
+                                                            <img src="img/products/women_01.jpg" alt="">
                                                         </figure>
                                                         <div class="icons">
                                                             <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
@@ -404,7 +377,7 @@
                                                             </span>
                                                         </div>
                                                         <figure class="layer">
-                                                            <img src="{{ url('img/0/products/kids_01.jpg') }}" alt="">
+                                                            <img src="img/products/kids_01.jpg" alt="">
                                                         </figure>
                                                         <div class="icons">
                                                             <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
@@ -431,35 +404,29 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown yamm-fw">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                                <span class="hidden-sm">Categories</span><i class="fa fa-bars ml-5"></i>
+                                <span class="hidden-sm">Kategori</span><i class="fa fa-bars ml-5"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <!-- Content container to add padding -->
                                     <div class="yamm-content">
-                                        <div class="row">
-                                            <ul class="col-xs-12 col-sm-3">
-                                                <li class="title">
-                                                    <h6>Categories</h6>
-                                                </li>
-                                                <li><a href="javascript:void(0);">Mens</a></li>
-                                                <li><a href="javascript:void(0);">Womens</a></li>
-                                                <li><a href="javascript:void(0);">Kids</a></li>
-                                                <li><a href="javascript:void(0);">Fashion</a></li>
-                                                <li><a href="javascript:void(0);">Sportwear</a></li>
-                                                <li><a href="javascript:void(0);">Bags</a></li>
-                                                <li><a href="javascript:void(0);">Shoes</a></li>
-                                                <li><a href="javascript:void(0);">HouseHolds</a></li>
-                                                <li><a href="javascript:void(0);">Technology</a></li>
-                                            </ul>
+                                        <div class="row">                                            
                                             <div class="col-sm-9">
-                                                <h6 class="text-center">Men Collection - <span class="text-primary">25% Off</span></h6>
+                                                <h6 class="text-center">Buat Akun - <span class="text-primary">Belanja Lebih Mudah</span></h6>
                                                 <figure>
                                                     <a href="javascript:void(0);">
                                                         <img alt="" src="{{ url('img/0/banners/banner_big.jpg')}}">
                                                     </a>
                                                 </figure>
                                             </div><!-- end col -->
+                                            <ul class="col-xs-12 col-sm-3">
+                                                <li class="title">
+                                                    <h6>Kategori</h6>
+                                                </li>
+                                                <li><a href="javascript:void(0);">Cemilan</a></li>
+                                                <li><a href="javascript:void(0);">Sabun</a></li>
+                                                <li><a href="javascript:void(0);">Rokok</a></li>                                                
+                                            </ul>
                                         </div><!-- end row -->
                                     </div><!-- end yamn-content -->
                                 </li>
@@ -475,7 +442,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Beranda</a></li>
                             <li><a href="#">Pages</a></li>
                             <li class="active">Shop Full Width Filter Top</li>
                         </ul><!-- end breadcrumb -->
@@ -487,554 +454,8 @@
         <!-- start section -->
         <section class="section white-backgorund">
             <div class="container-fluid padding">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-12 text-left">
-                                <ul class="list list-inline">
-                                    <li><a href="javascript:void(0);" data-toggle="collapse" data-target=".sidebarFilter"><i class="fa fa-align-left mr-5"></i> Filter</a></li>
-                                </ul>
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                        
-                        <hr class="spacer-5"><hr class="spacer-20 no-border">
-                        
-                        <div class="sidebarFilter collapse">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="widget">
-                                        <h6 class="subtitle thin">Search</h6>
-                                        <form>
-                                            <input type="text" id="lastname" class="form-control input-sm" placeholder="Search">
-                                        </form>
-                                    </div><!-- end widget -->
-                                </div><!-- end col -->
-                                <div class="col-sm-3">
-                                    <div class="widget">
-                                        <h6 class="subtitle thin">Categories</h6>
-
-                                        <ul class="list list-unstyled">
-                                            <li>
-                                                <div class="checkbox-input checkbox-default">
-                                                    <input id="mens-category" class="styled" type="checkbox" checked>
-                                                    <label for="mens-category">
-                                                        Mens  <span class="text-dark">(11)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-input checkbox-default">
-                                                    <input id="womens-category" class="styled" type="checkbox" checked>
-                                                    <label for="womens-category">
-                                                        Womens <span class="text-dark">(21)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-input checkbox-default0">
-                                                    <input id="kids-category" class="styled" type="checkbox" checked>
-                                                    <label for="kids-category">
-                                                        Kids <span class="text-dark">(12)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-input checkbox-default0">
-                                                    <input id="fashion-category" class="styled" type="checkbox" checked>
-                                                    <label for="fashion-category">
-                                                        Fashion <span class="text-dark">(12)</span>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end widget -->
-                                </div><!-- end col -->
-                                <div class="col-sm-3">
-                                    <div class="widget">
-                                        <h6 class="subtitle thin">Prices</h6>
-
-                                        <form method="post" class="price-range" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
-                                            <div class="ui-range-values">
-                                                <div class="ui-range-value-min">
-                                                    $<span></span>
-                                                    <input type="hidden">
-                                                </div> -
-                                                <div class="ui-range-value-max">
-                                                    $<span></span>
-                                                    <input type="hidden">
-                                                </div>
-                                            </div>
-                                            <div class="ui-range-slider"></div>
-                                            <button type="submit" class="btn btn-light btn-block btn-sm">Filter</button>
-                                        </form>
-                                    </div><!-- end widget -->
-                                </div><!-- end col -->
-                                <div class="col-sm-3">
-                                    <div class="widget">
-                                        <h6 class="subtitle thin">Popular tags</h6>
-
-                                        <ul class="tags">
-                                            <li>
-                                                <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">shoes</a>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">shirt</a>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">jacket</a>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">sunglass</a>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end widget -->
-                                </div><!-- end col -->
-                            </div><!-- end row -->
-                            
-                            <hr class="spacer-30">
-                            
-                        </div><!-- end sidebarFilter -->
-                        
-                        <div class="row column-4">
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <div class="badges">
-                                            <span class="product-badge top left primary-background text-white semi-circle">Sale</span>
-                                            <span class="product-badge top right text-warning">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </span>
-                                        </div>
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img class="front" src="{{ url('img/0/products/men_01.jpg') }}" alt="">
-                                                <img class="back" src="{{ url('img/0/products/men_02.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <div class="badges">
-                                            <span class="product-badge top right danger-background text-white semi-circle">-20%</span>
-                                        </div>
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/women_01.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <div class="badges">
-                                            <span class="product-badge bottom left warning-background text-white semi-circle">Out of Stock</span>
-                                        </div>
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/bags_01.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <div class="badges">
-                                            <span class="product-badge bottom right info-background text-white semi-circle">New</span>
-                                        </div>
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/fashion_01.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/hoseholds_05.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/kids_01.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/shoes_01.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/technology_02.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/men_04.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/women_02.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/bags_05.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/hoseholds_04.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/bags_04.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/fashion_02.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/men_06.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail store style2">
-                                    <div class="header">
-                                        <figure class="layer">
-                                            <a href="javascript:void(0);">
-                                                <img src="{{ url('img/0/products/shoes_02.jpg') }}" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="icons">
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                            <a class="icon" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                            <a class="icon" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
-                                        <div class="price">
-                                            <small class="amount off">$68.99</small>
-                                            <span class="amount text-primary">$59.99</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
-                                    </div><!-- end caption -->
-                                </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                        
-                        <hr class="spacer-10 no-border">
-                        
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li class="active"><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end col -->   
-                </div><!-- end row -->
+                
+                @yield('listproduct')
 
                 <!-- Modal Product Quick View -->
                 <div class="modal fade productQuickView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -1053,27 +474,21 @@
                                             <div class='carousel-inner'>
                                                 <div class='item active'>
                                                     <figure>
-                                                        <img src='img/products/men_01.jpg' alt='' />
+                                                        <img src='{{ url("img/0/products/men_01.jpg")}}' alt='' />
                                                     </figure>
                                                 </div><!-- end item -->
-                                                <div class='item'>
-                                                    <div class="embed-responsive embed-responsive-16by9">
-                                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/NrmMk1Myrxc"></iframe>
-                                                    </div>
-                                                </div><!-- end item -->
-                                                <div class='item'>
                                                     <figure>
-                                                        <img src='img/products/men_03.jpg' alt='' />
+                                                        <img src='{{ url("img/0/products/men_03.jpg")}}' alt='' />
                                                     </figure>
                                                 </div><!-- end item -->
                                                 <div class='item'>
                                                     <figure>
-                                                        <img src='img/products/men_04.jpg' alt='' />
+                                                        <img src='{{ url("img/0/products/men_04.jpg")}}' alt='' />
                                                     </figure>
                                                 </div><!-- end item -->
                                                 <div class='item'>
                                                     <figure>
-                                                        <img src='img/products/men_05.jpg' alt=''/>
+                                                        <img src='{{ url("img/0/products/men_05.jpg")}}' alt=''/>
                                                     </figure>
                                                 </div><!-- end item -->
 
@@ -1088,13 +503,13 @@
 
                                             <!-- thumbs -->
                                             <ol class='carousel-indicators mCustomScrollbar meartlab'>
-                                                <li data-target='.product-slider' data-slide-to='0' class='active'><img src='img/products/men_01.jpg' alt='' /></li>
-                                                <li data-target='.product-slider' data-slide-to='1'><img src='img/products/men_02.jpg' alt='' /></li>
-                                                <li data-target='.product-slider' data-slide-to='2'><img src='img/products/men_03.jpg' alt='' /></li>
-                                                <li data-target='.product-slider' data-slide-to='3'><img src='img/products/men_04.jpg' alt='' /></li>
-                                                <li data-target='.product-slider' data-slide-to='4'><img src='img/products/men_05.jpg' alt='' /></li>
-                                                <li data-target='.product-slider' data-slide-to='5'><img src='img/products/men_06.jpg' alt='' /></li>
-                                            </ol><!-- end carousel-indicators -->
+                                                <li data-target='.product-slider' data-slide-to='0' class='active'><img src='{{ url("img/0/products/men_01.jpg")}}' alt='' /></li>
+                                                <li data-target='.product-slider' data-slide-to='1'><img src='{{ url("img/0/products/men_02.jpg")}}' alt='' /></li>
+                                                <li data-target='.product-slider' data-slide-to='2'><img src='{{ url("img/0/products/men_03.jpg")}}' alt='' /></li>
+                                                <li data-target='.product-slider' data-slide-to='3'><img src='{{ url("img/0/products/men_04.jpg")}}' alt='' /></li>
+                                                <li data-target='.product-slider' data-slide-to='4'><img src='{{ url("img/0/products/men_05.jpg")}}' alt='' /></li>
+                                                <li data-target='.product-slider' data-slide-to='5'><img src='{{ url("img/0/products/men_06.jpg")}}' alt='' /></li>
+                                            </ol><!-- end carousel-indicators -->")}}
                                         </div><!-- end carousel -->
                                     </div><!-- end col -->
                                     <div class="col-sm-7">
