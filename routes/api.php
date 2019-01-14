@@ -155,8 +155,7 @@ Route::group(['middleware' => ['basicAuth']], function()
                 Route::post('/', 'Api\ProductController@store');
                 Route::get('/{id}', 'Api\ProductController@show');
                 Route::put('/{id}', 'Api\ProductController@edit');
-                Route::delete('/{id}', 'Api\ProductController@delete
-                ');
+                Route::delete('/{id}', 'Api\ProductController@delete');
             });            
         });
     });
