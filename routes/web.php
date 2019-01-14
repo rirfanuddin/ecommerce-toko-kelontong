@@ -18,4 +18,19 @@
 Route::get('/', 'Web\MainController@index')->name('main.index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'a', 'middleware' => 'admin'], function(){
+    Route::get('home', 'HomeController@admintest');
+    Route::get('home2', 'HomeController@admintest2');
+});
+
+Route::group(['prefix' => 'p', 'middleware' => 'pendamping'], function(){
+    Route::get('home', 'HomeController@pendampingtest');
+});
+
+Route::group(['prefix' => 't', 'middleware' => 'toko'], function(){
+    Route::get('home', 'HomeController@tokotest');
+});
+
+Route::group(['prefix' => 'u', 'middleware' => 'user'], function(){
+    Route::get('home', 'HomeController@index')->name('home');
+});
