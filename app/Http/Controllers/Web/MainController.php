@@ -10,4 +10,9 @@ class MainController extends Controller
     public function index(){
         return view('user.first');
     }
+
+    public function detailProduk(){
+        return view('user.detail_produk');
+    }
+
 }
