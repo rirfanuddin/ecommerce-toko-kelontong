@@ -2,79 +2,181 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'admin'], function()
+// Basic routes API
+Route::group(['prefix' => 'basic', 'middleware' => ['basicAuth']], function()
 {
-    // Route::group(['prefix' => 'base'], function()
-    // {
-    //     Route::post('role', 'AdminController@createRole');
-    //     Route::post('permission', 'AdminController@createPermission');
-    //     Route::post('assign-role', 'AdminController@assignRole');
-    //     Route::post('attach-permission', 'AdminController@attachPermission');        
-    // });
-    Route::post('register', 'AdminController@register');
-    Route::post('login', 'AdminController@login');
+    Route::post('role', 'Api\JwtAuthenticateController@createRole');
+    Route::post('permission', 'Api\JwtAuthenticateController@createPermission');
+    Route::post('add-admin-core', 'Api\JwtAuthenticateController@addadmincore');
+
+    Route::post('assign-role', 'Api\JwtAuthenticateController@assignRole');
+    Route::post('attach-permission', 'Api\JwtAuthenticateController@attachPermission');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['ability:admin,create-users']], function()
+Route::group(['middleware' => ['basicAuth']], function()
 {
-    Route::get('users', 'AdminController@index');
-});
+    // =================================beginning of admin-core=================================
 
-Route::group(['prefix' => 'master-parameter'], function()
-{
-    Route::get('province', 'ProvinceController@index');
-    Route::get('province/{id}', 'ProvinceController@show');
-    Route::post('province', 'ProvinceController@store');
-    Route::put('province/{id}', 'ProvinceController@edit');
-    Route::delete('province/{id}', 'ProvinceController@delete');
+    Route::group(['prefix' => 'admin-core'], function(){
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
+        Route::group(['middleware' => ['ability:admin-core,4']], function()
+        {                                        
+            Route::group(['prefix' => 'admin'], function()
+            {                                        
+                Route::get('/', 'Api\AdminCoreController@admin_index');
+                Route::get('/{id}', 'Api\AdminCoreController@admin_show');
+                Route::post('/', 'Api\AdminCoreController@admin_register');
+                Route::put('/{id}', 'Api\AdminCoreController@admin_edit');
+                // Route::put('/delete/{id}', 'Api\AdminCoreController@admin_delete');
+            });                                                  
+            Route::group(['prefix' => 'user'], function()
+            {                                        
+                Route::get('/', 'Api\AdminController@user_index');
+                Route::get('/{id}', 'Api\AdminController@user_show');
+            });
+            Route::group(['prefix' => 'shop'], function()
+            {                                        
+                Route::post('/register', 'Api\ShopController@register');
+                Route::get('/', 'Api\AdminController@shop_index');
+                Route::get('/{id}', 'Api\AdminController@shop_show');
+                Route::put('/{id}', 'Api\AdminController@shop_edit');
+                // Route::delete('/{id}', 'Api\AdminController@shop_delete');
+            });         
+        });
+    }); 
     
-    Route::get('city/{province?}', 'CityController@index');
-    Route::get('city/{id}', 'CityController@show');    
-    Route::post('city', 'CityController@store');
-    Route::put('city/{id}', 'CityController@edit');
-    Route::delete('city/{id}', 'CityController@delete');
+    Route::group(['prefix' => 'province', 'middleware' => ['ability:admin-core,4']], function()
+    {
+        Route::get('/', 'Api\ProvinceController@index');
+        Route::get('/{id}', 'Api\ProvinceController@show');
+        Route::post('/', 'Api\ProvinceController@store');
+        Route::put('/{id}', 'Api\ProvinceController@edit');
+        Route::delete('/{id}', 'Api\ProvinceController@delete');
+    });
+    
+    Route::group(['prefix' => 'city', 'middleware' => ['ability:admin-core,4']], function()
+    {            
+        Route::get('/{province?}', 'Api\CityController@index');
+        Route::get('/{id}', 'Api\CityController@show');
+        Route::post('/', 'Api\CityController@store');
+        Route::put('/{id}', 'Api\CityController@edit');
+        Route::delete('/{id}', 'Api\CityController@delete');
+    });
 
-    Route::get('sub-district/{city?}', 'SubDistrictController@index');
-    Route::get('sub-district/{id}', 'SubDistrictController@show');    
-    Route::post('sub-district', 'SubDistrictController@store');
-    Route::put('sub-district/{id}', 'SubDistrictController@edit');
-    Route::delete('sub-district/{id}', 'SubDistrictController@delete');
+    Route::group(['prefix' => 'sub-district', 'middleware' => ['ability:admin-core,4']], function()
+    {            
+        Route::get('/{city?}', 'Api\SubDistrictController@index');
+        Route::get('/id/{id}', 'Api\SubDistrictController@show');
+        Route::post('/', 'Api\SubDistrictController@store');
+        Route::put('/{id}', 'Api\SubDistrictController@edit');
+        Route::delete('/{id}', 'Api\SubDistrictController@delete');
+    });
 
-    Route::get('village/{subdistrict?}', 'VillageController@index');
-    Route::get('village/{id}', 'VillageController@show');    
-    Route::post('village', 'VillageController@store');
-    Route::put('village/{id}', 'VillageController@edit');
-    Route::delete('village/{id}', 'VillageController@delete');
+    Route::group(['prefix' => 'village', 'middleware' => ['ability:admin-core,4']], function()
+    {                        
+        Route::get('/{subdistrict?}', 'Api\VillageController@index');
+        Route::get('/id/{id}', 'Api\VillageController@show');
+        Route::post('/', 'Api\VillageController@store');
+        Route::put('/{id}', 'Api\VillageController@edit');
+        Route::delete('/{id}', 'Api\VillageController@delete');
+    });
 
-    Route::get('transportation', 'UserTransportationController@index');
-    Route::get('transportation/{id}', 'UserTransportationController@show');
-    Route::post('transportation', 'UserTransportationController@store');
-    Route::put('transportation/{id}', 'UserTransportationController@edit');
-    Route::delete('transportation/{id}', 'UserTransportationController@delete');
+    Route::group(['prefix' => 'transportation', 'middleware' => ['ability:admin-core,4']], function()
+    {                                
+        Route::get('/', 'Api\UserTransportationController@index');
+        Route::get('/{id}', 'Api\UserTransportationController@show');
+        Route::post('/', 'Api\UserTransportationController@store');
+        Route::put('/{id}', 'Api\UserTransportationController@edit');
+        Route::delete('/{id}', 'Api\UserTransportationController@delete');
+    });
 
-    Route::get('category', 'CategoryController@index');
-    Route::get('category/{id}', 'CategoryController@show');
-    Route::post('category', 'CategoryController@store');
-    Route::put('category/{id}', 'CategoryController@edit');
-    Route::delete('category/{id}', 'CategoryController@delete');
+    Route::group(['prefix' => 'category', 'middleware' => ['ability:admin-core,4']], function()
+    {                                        
+        Route::get('/', 'Api\CategoryController@index');
+        Route::get('/{id}', 'Api\CategoryController@show');
+        Route::post('/', 'Api\CategoryController@store');
+        Route::put('/{id}', 'Api\CategoryController@edit');
+        Route::delete('/{id}', 'Api\CategoryController@delete');
+    });
+
+    Route::group(['prefix' => 'payment', 'middleware' => ['ability:admin-core,4']], function()
+    {                                        
+        Route::get('/', 'Api\PaymentController@index');
+        Route::get('/{id}', 'Api\PaymentController@show');
+        Route::post('/', 'Api\PaymentController@store');
+        Route::put('/{id}', 'Api\PaymentController@edit');
+        Route::put('/delete/{id}', 'Api\PaymentController@delete');
+    });
+
+    // =================================end of admin-core==================================
+    // =================================beginning of admin=================================
+
+    Route::group(['prefix' => 'admin'], function(){
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
+        Route::group(['middleware' => ['ability:admin,3']], function()
+        {                                        
+            Route::group(['prefix' => 'user'], function()
+            {                                        
+                Route::get('/', 'Api\AdminController@user_index');
+                Route::get('/{id}', 'Api\AdminController@user_show');
+            });
+            Route::group(['prefix' => 'shop'], function()
+            {                                        
+                Route::post('/register', 'Api\ShopController@register');
+                Route::get('/', 'Api\AdminController@shop_index');
+                Route::get('/{id}', 'Api\AdminController@shop_show');
+                Route::put('/{id}', 'Api\AdminController@shop_edit');
+                // Route::delete('/{id}', 'Api\AdminController@shop_delete');
+            });
+            Route::group(['prefix' => 'product'], function()
+            {
+                Route::get('/', 'Api\AdminController@product_index');
+                Route::get('/{id}', 'Api\ProductController@show');
+                Route::post('/', 'Api\ProductController@store');
+                Route::put('/{id}', 'Api\ProductController@edit');
+                Route::delete('/{id}', 'Api\ProductController@delete');
+            });
+        });
+    });
+
+    // =================================end of admin======================================
+    // =================================beginning of shop=================================
+
+    Route::group(['prefix' => 'shop'], function(){
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
+        Route::group(['middleware' => ['ability:shop,2']], function()
+        {                                        
+            Route::group(['prefix' => 'product'], function()
+            {                                        
+                Route::post('/', 'Api\ProductController@store');
+                Route::get('/{id}', 'Api\ProductController@show');
+                Route::put('/{id}', 'Api\ProductController@edit');
+                Route::delete('/{id}', 'Api\ProductController@delete');
+            });            
+        });
+    });
+
+    // =================================end of shop=======================================
+    // =================================beginning of user=================================
+
+    Route::group(['prefix' => 'user'], function(){
+        Route::post('login', 'Api\JwtAuthenticateController@authenticate');
+        Route::post('register', 'Api\UserController@register');
+        Route::group(['middleware' => ['ability:user,1']], function()
+        {
+            Route::group(['prefix' => 'address'], function()
+            {
+                Route::get('/{id}', 'Api\AddressController@show');
+                Route::post('/', 'Api\AddressController@store');
+                Route::put('/{id}', 'Api\AddressController@edit');
+            });
+        });
+    }); 
+
+    // =================================end of user=================================
 
 });
-
-Route::get('address/{id}', 'AddressController@show');
-Route::post('address', 'AddressController@store');
-Route::put('address/{id}', 'AddressController@edit');
